@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>isoOS Hesap Makinesi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Yan Menü -->
+    <div id="sidebar" class="sidebar">
+        <button class="close-btn" onclick="toggleMenu()">×</button>
+        <div class="menu-content">
+            <h3>Menü</h3>
+            <button onclick="showHistory()">Hesap Makinesi Geçmişi</button>
+            <button onclick="toggleDarkMode()">Karanlık Mod Aç/Kapat</button>
+            <button onclick="aboutApp()">Bu Hesap Makinesi Hakkında</button>
+        </div>
+        <div id="history-list"></div>
+    </div>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <div class="calculator-container">
+        <!-- Katana Animasyonu İçin İkiye Bölünen Ekran -->
+        <div class="display-wrapper">
+            <div id="display-top" class="display-part">0</div>
+            <div id="display-bottom" class="display-part">0</div>
+            <div class="slash-line"></div>
+        </div>
+        
+        <div class="buttons">
+            <button onclick="clearDisplay()" class="span-two">C</button>
+            <button onclick="deleteLast()">DEL</button>
+            <button onclick="appendOperator('/')">÷</button>
+            <button onclick="appendNumber('7')">7</button>
+            <button onclick="appendNumber('8')">8</button>
+            <button onclick="appendNumber('9')">9</button>
+            <button onclick="appendOperator('*')">×</button>
+            <button onclick="appendNumber('4')">4</button>
+            <button onclick="appendNumber('5')">5</button>
+            <button onclick="appendNumber('6')">6</button>
+            <button onclick="appendOperator('-')">-</button>
+            <button onclick="appendNumber('1')">1</button>
+            <button onclick="appendNumber('2')">2</button>
+            <button onclick="appendNumber('3')">3</button>
+            <button onclick="appendOperator('+')">+</button>
+            <button onclick="appendNumber('0')" class="span-two">0</button>
+            <button onclick="appendNumber('.')">.</button>
+            <button onclick="calculate()" class="equals-btn">=</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

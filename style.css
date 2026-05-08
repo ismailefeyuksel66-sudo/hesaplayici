@@ -1,0 +1,122 @@
+:root {
+    --bg-color: #f0f2f5;
+    --calc-bg: rgba(255, 255, 255, 0.8);
+    --text-color: #333;
+    --btn-bg: #fff;
+    --accent: #ff4757;
+}
+
+body.dark-mode {
+    --bg-color: #1e1e1e;
+    --calc-bg: rgba(45, 45, 45, 0.9);
+    --text-color: #f0f0f0;
+    --btn-bg: #444;
+}
+
+body {
+    margin: 0;
+    height: 100-vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    transition: background 0.5s;
+}
+
+body.dark-mode {
+    background: linear-gradient(45deg, #2c3e50, #000000, #434343);
+    background-size: 400% 400%;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Yan Menü Tasarımı */
+.sidebar {
+    position: fixed;
+    left: -250px;
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background: var(--calc-bg);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    z-index: 100;
+    padding: 20px;
+    color: var(--text-color);
+}
+
+.sidebar.active { left: 0; }
+
+/* Hesap Makinesi ve Katana Efekti */
+.calculator-container {
+    background: var(--calc-bg);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.display-wrapper {
+    position: relative;
+    height: 80px;
+    background: #000;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.display-part {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    color: white;
+    text-align: right;
+    padding: 10px;
+    font-size: 24px;
+    box-sizing: border-box;
+    transition: transform 0.2s;
+}
+
+#display-bottom { top: 50%; display: flex; align-items: flex-end; justify-content: flex-end; }
+
+.slash-line {
+    position: absolute;
+    top: 50%;
+    left: -100%;
+    width: 200%;
+    height: 4px;
+    background: white;
+    transform: rotate(-5deg);
+    display: none;
+}
+
+/* Katana Animasyon Sınıfı */
+.slash-anim #display-top { transform: translate(10px, -10px) rotate(2deg); }
+.slash-anim #display-bottom { transform: translate(-10px, 10px) rotate(-2deg); }
+.slash-anim .slash-line { display: block; animation: slash 0.3s linear; }
+
+@keyframes slash {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.buttons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+button {
+    padding: 15px;
+    border: none;
+    background: var(--btn-bg);
+    color: var(--text-color);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.2s;
+}
+button:hover { filter: brightness(0.9); }
+.span-two { grid-column: span 2; }
